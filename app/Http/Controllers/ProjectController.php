@@ -28,13 +28,23 @@ class ProjectController extends Controller
     }
     public function index()
     {
-        $projects = Project::latest()->paginate(5);
+        $projects = Project::leftJoin('clients as c', 'c.id', 'projects.client_name')
+        ->select('projects.*','c.name as nombre_client')
+        ->paginate(5);
 
-        $cod = Client::select('name')->get();
+        // $cod = Client::select('name')->get();
      
-        return view('projects.index', compact('projects', 'cod'))
+        // return view('projects.index', compact('projects', 'cod'))
 
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        //     ->with('i', (request()->input('page', 1) - 1) * 5);
+        //$client_project = DB::select('select * from clients c, projects p where p.client_name = c.id');
+        $data = Project::leftJoin('clients as c', 'c.id', 'projects.client_name')
+        ->select('projects.*','c.name as nombre_client')
+        ->get();
+
+        return view('projects.index', compact('projects'));
+
+        //return view('projects.index', compact('data'));
     }
 
     /**
@@ -138,11 +148,11 @@ class ProjectController extends Controller
 
     public function innerJoin(Project $client_project, Client $client)
     {
-        $client_project = DB::select('select projects.name, clients.name
-        from clients
-        inner join projects on clients.id=projects.id');
+        $data = Project::leftJoin('clients as c', 'c.id', 'projects.client_name')
+        ->select('projects.*','c.name as nombre_client')
+        ->get();
      
-        return view('projects.index', compact('client_project'));
+        return view('projects.index', compact('data'));
 
     }
 }

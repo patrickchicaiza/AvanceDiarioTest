@@ -52,12 +52,12 @@
        
             <tr>
                
-                <td>{{ ++$i }}</td>
+                <td>{{ $project->id }}</td>
 
                 <td>{{ $project->name }}</td>
                 
                
-                <td> {{$project->client_project}}</td>
+                <td> {{$project->nombre_client}}</td>
                
 
                 <td>
