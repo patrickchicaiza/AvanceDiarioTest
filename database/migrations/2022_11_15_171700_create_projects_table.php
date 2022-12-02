@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('project_name');
 
-            $table->unsignedBigInteger('client')->nullable();
-            $table->foreign('client')->references('id')->on('clients');
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->foreign('client_id')->references('id')->on('clients');
+            $table->string('client_name');
 
             $table->timestamps();
         });

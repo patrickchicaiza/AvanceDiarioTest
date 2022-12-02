@@ -9,6 +9,6 @@ class Platform extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name'
+        'platform_name'
     ];
 }

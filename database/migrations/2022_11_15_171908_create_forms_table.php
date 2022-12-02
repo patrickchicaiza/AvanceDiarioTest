@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('forms', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('user')->nullable();
-            $table->foreign('user')->references('id')->on('users');
-             
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            
+            $table->string('user_name');
             $table->date('date');
             $table->time('entryTime');
             $table->time('departureTime');

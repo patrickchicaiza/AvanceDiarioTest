@@ -15,25 +15,31 @@ return new class extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('project_id')->nullable();
+            $table->foreign('project_id')->references('id')->on('projects');
 
-            $table->unsignedBigInteger('form')->nullable();
-            $table->foreign('form')->references('id')->on('forms');
+            $table->string('project_name');
+         
 
-            $table->unsignedBigInteger('project')->nullable();
-            $table->foreign('project')->references('id')->on('projects');
+            $table->unsignedBigInteger('platform_id')->nullable();
+            $table->foreign('platform_id')->references('id')->on('platforms');
+            $table->string('platform_name');
 
-            $table->unsignedBigInteger('platform')->nullable();
-            $table->foreign('platform')->references('id')->on('platforms');
+            $table->unsignedBigInteger('form_id')->nullable();
+            $table->foreign('form_id')->references('id')->on('forms');
+
+         
+
 
             $table->string('epic');
             $table->string('userStory');
             $table->time('estimatedTime');
             $table->time('startTime');
             $table->time('endTime');
-            $table->integer('progress');
+            $table->string('progress');
             $table->string('images');
-            $table->string('comment');
             $table->string('status');
+            $table->string('comment');
 
             $table->timestamps();
         });
