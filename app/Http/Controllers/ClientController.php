@@ -52,7 +52,7 @@ class ClientController extends Controller
     {
         request()->validate([
 
-            'name' => 'required',
+            'client_name' => 'required',
 
             'ruc' => 'required',
 
@@ -98,7 +98,7 @@ class ClientController extends Controller
     {
         request()->validate([
 
-            'name' => 'required',
+            'client_name' => 'required',
 
             'ruc' => 'required',
 

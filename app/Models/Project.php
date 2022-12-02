@@ -10,12 +10,13 @@ use App\Models\Client;
 class Project extends Model
 {
     use HasFactory;
+    public $table = 'projects';
     protected $fillable = [
-        'name'
+        'project_name'
     ];
 
-    public $table = 'projects';
+ 
     public function client(){
-        return $this->belongsTo(Client::class, 'client_name');
+        return $this->belongsTo(Client::class, 'client');
     }
 }

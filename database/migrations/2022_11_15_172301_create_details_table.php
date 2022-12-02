@@ -16,20 +16,14 @@ return new class extends Migration
         Schema::create('details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('project_id')->nullable();
-            $table->foreign('project_id')->references('id')->on('projects');
-
-            $table->string('project_name');
-         
+            $table->foreign('project_id')->references('id')->on('projects');        
 
             $table->unsignedBigInteger('platform_id')->nullable();
-            $table->foreign('platform_id')->references('id')->on('platforms');
-            $table->string('platform_name');
+            $table->foreign('platform_id')->references('id')->on('platforms');         
 
             $table->unsignedBigInteger('form_id')->nullable();
             $table->foreign('form_id')->references('id')->on('forms');
-
-         
-
+        
 
             $table->string('epic');
             $table->string('userStory');
