@@ -31,7 +31,7 @@
 
                 <strong>Name:</strong>
 
-                {{ $client->name }}
+                {{ $client->client_name }}
 
             </div>
 

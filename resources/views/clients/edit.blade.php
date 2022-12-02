@@ -56,7 +56,7 @@
 
                     <strong>Name:</strong>
 
-                    <input type="text" name="name" value="{{ $client->name }}" class="form-control"
+                    <input type="text" name="client_name" value="{{ $client->client_name }}" class="form-control"
                         placeholder="Name">
 
                 </div>

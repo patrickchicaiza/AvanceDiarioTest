@@ -53,7 +53,7 @@
 
                 <td>{{ ++$i }}</td>
 
-                <td>{{ $client->name }}</td>
+                <td>{{ $client->client_name }}</td>
 
                 <td>{{ $client->ruc }}</td>
 
