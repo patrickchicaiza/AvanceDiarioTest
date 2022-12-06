@@ -31,7 +31,7 @@
 
                 <strong>Name:</strong>
 
-                {{ $platform->name }}
+                {{ $platform->platform_name }}
 
             </div>
 

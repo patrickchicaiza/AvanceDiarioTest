@@ -54,7 +54,7 @@
 
                     <strong>Name:</strong>
 
-                    <input type="text" name="name" class="form-control" placeholder="Name">
+                    <input type="text" name="project_name" class="form-control" placeholder="Name">
 
                 </div>
 
@@ -66,8 +66,13 @@
 
                     <strong>Client:</strong>
 
-                    <input type="text" name="client" class="form-control" placeholder="Client">
-                    
+                    <select id="client_id" name="client_id" class="form-control" required>
+                        <option value="Elegir">--Seleccionar--</option>
+                        @foreach ($clientTable as $clientTables)
+                            <option value="{{ $clientTables->id }}">{{ $clientTables->client_name }}</option>
+                        @endforeach
+                    </select>
+
                 </div>
 
             </div>

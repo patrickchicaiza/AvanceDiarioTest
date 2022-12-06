@@ -12,11 +12,8 @@ class Project extends Model
     use HasFactory;
     public $table = 'projects';
     protected $fillable = [
-        'project_name'
+        'client_id', 'project_name'
     ];
 
  
-    public function client(){
-        return $this->belongsTo(Client::class, 'client');
-    }
 }

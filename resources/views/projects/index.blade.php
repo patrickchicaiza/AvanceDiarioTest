@@ -54,7 +54,7 @@
                
                 <td>{{ $project->id }}</td>
 
-                <td>{{ $project->name }}</td>
+                <td>{{ $project->project_name}}</td>
                 
                
                 <td> {{$project->nombre_client}}</td>

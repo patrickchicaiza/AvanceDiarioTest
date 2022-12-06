@@ -28,8 +28,8 @@ class ProjectController extends Controller
     }
     public function index()
     {
-        $projects = Project::leftJoin('clients as c', 'c.id', 'projects.client_name')
-        ->select('projects.*','c.name as nombre_client')
+        $projects = Project::leftJoin('clients as c', 'c.id', 'projects.client_id')
+        ->select('projects.*','c.client_name as nombre_client')
         ->paginate(5);
 
         // $cod = Client::select('name')->get();
@@ -38,8 +38,8 @@ class ProjectController extends Controller
 
         //     ->with('i', (request()->input('page', 1) - 1) * 5);
         //$client_project = DB::select('select * from clients c, projects p where p.client_name = c.id');
-        $data = Project::leftJoin('clients as c', 'c.id', 'projects.client_name')
-        ->select('projects.*','c.name as nombre_client')
+        $data = Project::leftJoin('clients as c', 'c.id', 'projects.client_id')
+        ->select('projects.*','c.client_name as nombre_client')
         ->get();
 
         return view('projects.index', compact('projects'));
@@ -54,7 +54,11 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+         
+        $clientTable = Client::get();
+                
+        return view('projects.create', compact('clientTable'));
+        
     }
 
     /**
@@ -65,15 +69,14 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
+       
+        $pj = new Project();
+        $pj->project_name = $request->project_name;
+        $pj->client_id = $request->client_id;
 
-            'name' => 'required',
+        $pj->save();
 
-            'client' => 'required',
-
-        ]);
-
-        Project::create($request->all());
+        //Project::create($request->all());
 
         return redirect()->route('projects.index')
 
@@ -118,9 +121,8 @@ class ProjectController extends Controller
     {
         request()->validate([
 
-              'name' => 'required',
-
-            'client' => 'required',
+            'project_name' => 'required',
+            
 
         ]);
 
@@ -146,7 +148,7 @@ class ProjectController extends Controller
             ->with('Proyecto borrado correctamente');
     }
 
-    public function innerJoin(Project $client_project, Client $client)
+  /*   public function innerJoin(Project $client_project, Client $client)
     {
         $data = Project::leftJoin('clients as c', 'c.id', 'projects.client_name')
         ->select('projects.*','c.name as nombre_client')
@@ -154,5 +156,5 @@ class ProjectController extends Controller
      
         return view('projects.index', compact('data'));
 
-    }
+    } */
 }

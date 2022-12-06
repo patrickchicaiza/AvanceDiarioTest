@@ -40,7 +40,7 @@
 
             <th>No</th>
 
-            <th>Name</th>   
+            <th>Name</th>
 
             <th width="280px">Action</th>
 
@@ -51,7 +51,7 @@
 
                 <td>{{ ++$i }}</td>
 
-                <td>{{ $platform->name }}</td>               
+                <td>{{ $platform->platform_name }}</td>
 
                 <td>
 

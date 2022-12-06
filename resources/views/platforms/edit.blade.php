@@ -56,7 +56,7 @@
 
                     <strong>Name:</strong>
 
-                    <input type="text" name="name" value="{{ $platform->name }}" class="form-control"
+                    <input type="text" name="platform_name" value="{{ $platform->platform_name }}" class="form-control"
                         placeholder="Name">
 
                 </div>

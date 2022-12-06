@@ -53,7 +53,7 @@ class PlatformController extends Controller
     {
         request()->validate([
 
-            'name' => 'required',
+            'platform_name' => 'required',
 
         ]);
 
@@ -97,7 +97,7 @@ class PlatformController extends Controller
     {
         request()->validate([
 
-            'name' => 'required',
+            'platform_name' => 'required',
 
         ]);
 

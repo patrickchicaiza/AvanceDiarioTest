@@ -54,7 +54,7 @@
 
                     <strong>Name:</strong>
 
-                    <input type="text" name="name" class="form-control" placeholder="Name">
+                    <input type="text" name="platform_name" class="form-control" placeholder="Name">
 
                 </div>
 
