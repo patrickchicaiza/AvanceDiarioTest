@@ -31,7 +31,7 @@
 
                 <strong>Name:</strong>
 
-                {{ $project->name }}
+                {{ $project->project_name }}
 
             </div>
 
@@ -43,7 +43,7 @@
 
                 <strong>Clients:</strong>
 
-                {{ $project->client }}
+                {{ $project->client_id }}
 
             </div>
 

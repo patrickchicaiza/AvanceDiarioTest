@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -29,18 +28,18 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::leftJoin('clients as c', 'c.id', 'projects.client_id')
-        ->select('projects.*','c.client_name as nombre_client')
-        ->paginate(5);
+            ->select('projects.*', 'c.client_name as nombre_client')
+            ->paginate(5);
 
         // $cod = Client::select('name')->get();
-     
+
         // return view('projects.index', compact('projects', 'cod'))
 
         //     ->with('i', (request()->input('page', 1) - 1) * 5);
         //$client_project = DB::select('select * from clients c, projects p where p.client_name = c.id');
         $data = Project::leftJoin('clients as c', 'c.id', 'projects.client_id')
-        ->select('projects.*','c.client_name as nombre_client')
-        ->get();
+            ->select('projects.*', 'c.client_name as nombre_client')
+            ->get();
 
         return view('projects.index', compact('projects'));
 
@@ -54,11 +53,11 @@ class ProjectController extends Controller
      */
     public function create()
     {
-         
+
         $clientTable = Client::get();
-                
+
         return view('projects.create', compact('clientTable'));
-        
+
     }
 
     /**
@@ -69,7 +68,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         $pj = new Project();
         $pj->project_name = $request->project_name;
         $pj->client_id = $request->client_id;
@@ -83,14 +82,13 @@ class ProjectController extends Controller
             ->with('Proyecto creado satisfactoriamente.');
     }
 
-    
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project, Client $client)
+    public function show(Project $project)
     {
 
         return view('projects.show', compact('project'));
@@ -102,9 +100,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project, Client $client)
+    public function edit(Project $project)
     {
-        $project = Project::all();
+        /*  $project = Client::all(); */
 
         return view('projects.edit', compact('project'));
 
@@ -117,20 +115,28 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project, Client $client, $id)
+    /*  public function update(Request $request, Project $project)
     {
-        request()->validate([
+    request()->validate([
 
-            'project_name' => 'required',
-            
+    'project_name' => 'required',
 
-        ]);
+    ]);
 
-        $project->update($request->all());
+    $project->update($request->all());
+
+    return redirect()->route('projects.index')
+
+    ->with('Proyecto actualizado satisfactoriamente');
+    } */
+    public function update(Request $request, $id)
+    {
+        $input = $request->all();
+        $project = Project::find($id);
+        $project->update($input);
 
         return redirect()->route('projects.index')
-
-            ->with('Proyecto actualizado satisfactoriamente');
+            ->with('success', 'Proyecto editado correctamente');
     }
 
     /**
@@ -148,13 +154,13 @@ class ProjectController extends Controller
             ->with('Proyecto borrado correctamente');
     }
 
-  /*   public function innerJoin(Project $client_project, Client $client)
-    {
-        $data = Project::leftJoin('clients as c', 'c.id', 'projects.client_name')
-        ->select('projects.*','c.name as nombre_client')
-        ->get();
-     
-        return view('projects.index', compact('data'));
+    /*   public function innerJoin(Project $client_project, Client $client)
+{
+$data = Project::leftJoin('clients as c', 'c.id', 'projects.client_name')
+->select('projects.*','c.name as nombre_client')
+->get();
 
-    } */
+return view('projects.index', compact('data'));
+
+} */
 }

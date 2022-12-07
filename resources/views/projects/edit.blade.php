@@ -56,7 +56,7 @@
 
                     <strong>Name:</strong>
 
-                    <input type="text" name="name" value="{{ $project->name }}" class="form-control"
+                    <input type="text" name="project_name" value="{{ $project->project_name }}" class="form-control"
                         placeholder="Name">
 
                 </div>
@@ -69,18 +69,26 @@
 
                     <strong>Client:</strong>
 
-                    <td> 
-                        @foreach ($projects as $client) 
-                        <select name="client">
+                    <td>
+                        <input type="text" name="client_id" value="{{ $project->client_id }}" class="form-control"
+                            placeholder="Name">
+
+
+                        {{--           <select id="client_id" name="client_id" class="form-control" required>
+                            <option value="Elegir">--Seleccionar--</option>
                            
-                          
-                             
-                            <option name="client" value="{{ $client->name }}">{{ $client->name }}</option>
-             
+                                <option value="{{ $project->client_id }}">{{ $project->client_id }}</option>
+                   
+                        </select>
+
+                        <select id="client_id" name="client_id" class="form-control" required>
+                            <option value="Elegir">--Seleccionar--</option>
+                            @foreach ($project as $projects)
+                                <option value="{{ $projects->project_name }}">{{ $projects->client_id }}</option>
                             @endforeach
                         </select>
-                                            
-    
+
+ --}}
                     </td>
 
                 </div>

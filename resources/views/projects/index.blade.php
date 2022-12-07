@@ -49,16 +49,15 @@
         </tr>
 
         @foreach ($projects as $project)
-       
             <tr>
-               
+
                 <td>{{ $project->id }}</td>
 
-                <td>{{ $project->project_name}}</td>
-                
-               
-                <td> {{$project->nombre_client}}</td>
-               
+                <td>{{ $project->project_name }}</td>
+
+
+                <td> {{ $project->nombre_client }}</td>
+
 
                 <td>
 
