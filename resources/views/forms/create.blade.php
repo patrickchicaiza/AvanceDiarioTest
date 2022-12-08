@@ -9,7 +9,7 @@
 
             <div class="pull-left">
 
-                <h2>Edit Form</h2>
+                <h2>Add New Form</h2>
 
             </div>
 
@@ -41,23 +41,24 @@
     @endif
 
 
-    <form action="{{ route('forms.update', $form->id) }}" method="POST">
+    <form action="{{ route('forms.store') }}" method="POST">
 
         @csrf
 
-        @method('PUT')
-
 
         <div class="row">
-
             <div class="col-xs-12 col-sm-12 col-md-12">
 
                 <div class="form-group">
 
-                    <strong>User ID:</strong>
+                    <strong>User:</strong>
 
-                    <input type="text" name="user_id" value="{{ $form->user_id }}" class="form-control"
-                        placeholder="Name">
+                    <select id="user_id" name="user_id" class="form-control" required>
+                        <option value="Elegir">--Seleccionar--</option>
+                        @foreach ($userTable as $userTables)
+                            <option value="{{ $userTables->id }}">{{ $userTables->name }}</option>
+                        @endforeach
+                    </select>
 
                 </div>
 
@@ -67,22 +68,21 @@
 
                 <div class="form-group">
 
-                    <strong>User ID:</strong>
+                    <strong>Date:</strong>
 
-                    <input type="date" name="date" value="{{ $form->date }}" class="form-control"
-                        placeholder="Date" readonly>
+                    <input type="date" name="date" class="form-control" placeholder="Date">
 
                 </div>
 
             </div>
+
             <div class="col-xs-12 col-sm-12 col-md-12">
 
                 <div class="form-group">
 
-                    <strong>Entry Time:</strong>
+                    <strong>Entry TIme:</strong>
 
-                    <input type="time" name="entryTime" value="{{ $form->entryTime }}" class="form-control"
-                        placeholder="Entry TIme">
+                    <input type="time" name="entryTime" class="form-control" placeholder="Entry Time">
 
                 </div>
 
@@ -94,12 +94,13 @@
 
                     <strong>Departure Time:</strong>
 
-                    <input type="time" name="departureTime" value="{{ $form->departureTime }}" class="form-control"
-                        placeholder="Departure TIme">
+                    <input type="time" name="departureTime" class="form-control" placeholder="Departure Time">
 
                 </div>
 
             </div>
+
+
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 

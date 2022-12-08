@@ -9,12 +9,9 @@ use App\Models\User;
 class Form extends Model
 {
     use HasFactory;
-    public $table = 'forms';
-    public function user(){
-        return $this->belongsTo(User::class, 'user');
-    }
+    public $table = 'forms';   
     protected $fillable = [
-        'date', 'entryTime', 'departureTime'
+        'user_id', 'date', 'entryTime', 'departureTime'
     ];  
 
 }

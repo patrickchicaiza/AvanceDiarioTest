@@ -28,11 +28,18 @@ class FormController extends Controller
     }
     public function index()
     {
-        $forms = Form::latest()->paginate(5);
+        /*  $forms = Form::latest()->paginate(5);
 
         return view('forms.index', compact('forms'))
 
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        ->with('i', (request()->input('page', 1) - 1) * 5); */
+
+        $forms = Form::leftJoin('users as u', 'u.id', 'forms.user_id')
+            ->select('forms.*', 'u.name as userName')
+            ->paginate(5);
+
+        return view('forms.index', compact('forms'));
+
     }
 
     /**
@@ -42,7 +49,10 @@ class FormController extends Controller
      */
     public function create()
     {
-        return view('forms.create');
+        $userTable = User::get();
+
+        return view('forms.create', compact('userTable'));
+
     }
 
     /**
@@ -53,20 +63,19 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
+        $pj = new Form();
+        $pj->user_id = $request->user_id;
+        $pj->date = $request->date;
+        $pj->entryTime = $request->entryTime;
+        $pj->departureTime = $request->departureTime;
 
-            'user' => 'required',
-            'date' => 'required',
-            'entryTime' => 'required',
-            'departureTime' => 'required',
+        $pj->save();
 
-        ]);
-
-        Form::create($request->all());
+        //Form::create($request->all());
 
         return redirect()->route('forms.index')
 
-            ->with('Formulario creado correctamente.');
+            ->with('Formulario creado satisfactoriamente.');
     }
 
     /**
@@ -75,8 +84,9 @@ class FormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Form $form, User $user)
+    public function show(Form $form)
     {
+        
         return view('forms.show', compact('form'));
     }
 
@@ -98,22 +108,14 @@ class FormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Form $form, User $user)
+    public function update(Request $request, $id)
     {
-        request()->validate([
-
-            'user' => 'required',
-            'date' => 'required',
-            'entryTime' => 'required',
-            'departureTime' => 'required',
-
-        ]);
-
-        $form->update($request->all());
+        $input = $request->all();
+        $form = Form::find($id);
+        $form->update($input);
 
         return redirect()->route('forms.index')
-
-            ->with('Formulario actualizado correctamente');
+            ->with('success', 'Formulario editado correctamente');
 
     }
 
@@ -123,7 +125,7 @@ class FormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Form $form, User $user)
+    public function destroy(Form $form)
     {
         $form->delete();
 

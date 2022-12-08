@@ -37,9 +37,9 @@ class ProjectController extends Controller
 
         //     ->with('i', (request()->input('page', 1) - 1) * 5);
         //$client_project = DB::select('select * from clients c, projects p where p.client_name = c.id');
-        $data = Project::leftJoin('clients as c', 'c.id', 'projects.client_id')
+       /*  $data = Project::leftJoin('clients as c', 'c.id', 'projects.client_id')
             ->select('projects.*', 'c.client_name as nombre_client')
-            ->get();
+            ->get(); */
 
         return view('projects.index', compact('projects'));
 
