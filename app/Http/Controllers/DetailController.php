@@ -6,6 +6,7 @@ use App\Models\Detail;
 use App\Models\Form;
 use App\Models\Platform;
 use App\Models\Project;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
@@ -29,11 +30,28 @@ class DetailController extends Controller
     }
     public function index()
     {
-        $details = Detail::latest()->paginate(5);
+        /*     $details = Detail::latest()->paginate(5);
 
         return view('details.index', compact('details'))
 
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        ->with('i', (request()->input('page', 1) - 1) * 5); */
+
+/*         $details = Detail::leftJoin('projects as pr', 'platforms as pl', 'forms as fr', 'pr.id', 'pl.id', 'fr.id', 'details.project_id', 'details.platform_id', 'details.form_id') */
+         $details = Detail::leftJoin('projects as pr', 'platforms as pl', 'forms as fr', 'pr.id', 'pl.id', 'fr.id', 'details.project_id', 'details.platform_id', 'details.form_id', 'clients as cl', 'cl.id')
+            ->select('details.*', 'pr.project_id as projectId', 'pl.platform_name as platformtName', 'fr.user_id as userId', 'cl.client_name as clientName')
+            ->paginate(5);
+            dd($details); 
+       /*  $prue = Project::all();
+
+            dd($prue); */
+        return view('details.index', compact('details'));
+
+
+        $tare = Evento::leftjoin('users as us', 'us.id', 'eventos.id_user')
+        ->leftjoin('pacientes as pac', 'pac.id_user', 'us.id')
+        ->leftjoin('antecedentes as ant', 'ant.id_paci', 'pac.id')
+        ->get(['eventos.*', 'us.name as NamePac', 'us.email as Mail', 'us.id as user_id', 'pac.id as idpac'])
+        ->find($id);
     }
 
     /**

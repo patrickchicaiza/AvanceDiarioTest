@@ -13,20 +13,8 @@ class Detail extends Model
 {
     use HasFactory;
 
-    public $table = 'details';
-    public function form(){
-        return $this->belongsTo(Form::class, 'form');
-    }
-
-    public function project(){
-        return $this->belongsTo(Project::class, 'project');
-    }
-
-    public function platform(){
-        return $this->belongsTo(Platform::class, 'platform');
-    }
-
+    public $table = 'details';  
     protected $fillable = [
-        'epic', 'userStory', 'estimatedTime', 'startTime', 'endTime', 'progress', 'images', 'comment', 'status' 
+        'project_id', 'platform_id', 'form_id', 'epic', 'userStory', 'estimatedTime', 'startTime', 'endTime', 'progress', 'images', 'status','comment'
     ];  
 }
