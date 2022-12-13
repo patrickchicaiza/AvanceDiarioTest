@@ -36,7 +36,6 @@ class DetailController extends Controller
             ->select('details.*', 'pr.project_name as projectName', 'pl.platform_name as platformName', 'fr.user_id as userId')
             ->paginate(5);
 
-   
         return view('details.index', compact('details'));
     }
 
@@ -47,7 +46,14 @@ class DetailController extends Controller
      */
     public function create()
     {
-        return view('details.create');
+        $projectTable = Project::get();
+
+        $platformTable = Platform::get();
+
+        $formTable = Form::get();
+
+        return view('details.create', compact('projectTable', 'platformTable', 'formTable'));
+
     }
 
     /**
@@ -58,28 +64,27 @@ class DetailController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
+        $pj = new Detail();
+        $pj->project_id = $request->project_id;
+        $pj->platform_id = $request->platform_id;
+        $pj->form_id = $request->form_id;
+        $pj->epic = $request->epic;
+        $pj->userStory = $request->userStory;
+        $pj->estimatedTime = $request->estimatedTime;
+        $pj->startTime = $request->startTime;
+        $pj->endTime = $request->endTime;
+        $pj->progress = $request->progress;
+        $pj->images = $request->images;
+        $pj->status = $request->status;
+        $pj->comment = $request->comment;
 
-            'form' => 'required',
-            'project' => 'required',
-            'platform' => 'required',
-            'epic' => 'required',
-            'userStory' => 'required',
-            'estimatedTime' => 'required',
-            'startTime' => 'required',
-            'endTime' => 'required',
-            'progress' => 'required',
-            'images' => 'required',
-            'comment' => 'required',
-            'status' => 'required',
+        $pj->save();
 
-        ]);
-
-        Detail::create($request->all());
+        //Form::create($request->all());
 
         return redirect()->route('details.index')
 
-            ->with('Detalle creado correctamente');
+            ->with('Detalle creado satisfactoriamente.');
     }
 
     /**
@@ -88,7 +93,7 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Detail $detail, Form $form, Project $project, Platform $platform)
+    public function show(Detail $detail)
     {
         return view('details.show', compact('detail'));
     }
@@ -99,7 +104,7 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Detail $detail, Form $form, Project $project, Platform $platform)
+    public function edit(Detail $detail)
     {
         return view('details.edit', compact('detail'));
     }
@@ -111,30 +116,14 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Detail $detail, Form $form, Project $project, Platform $platform)
+    public function update(Request $request, $id)
     {
-        request()->validate([
+        $input = $request->all();
+        $detail = Detail::find($id);
+        $detail->update($input);
 
-            'form' => 'required',
-            'project' => 'required',
-            'platform' => 'required',
-            'epic' => 'required',
-            'userStory' => 'required',
-            'estimatedTime' => 'required',
-            'startTime' => 'required',
-            'endTime' => 'required',
-            'progress' => 'required',
-            'images' => 'required',
-            'comment' => 'required',
-            'status' => 'required',
-
-        ]);
-
-        $detail->update($request->all());
-
-        return redirect()->route('details.index')
-
-            ->with('Detalle actualizado correctamente');
+        return redirect()->route('detail.index')
+            ->with('success', 'Detalle editado correctamente');
     }
 
     /**
@@ -143,7 +132,7 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Detail $detail, Form $form, Project $project, Platform $platform)
+    public function destroy(Detail $detail)
     {
         $detail->delete();
 

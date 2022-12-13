@@ -52,6 +52,7 @@ class FormController extends Controller
         $userTable = User::get();
 
         return view('forms.create', compact('userTable'));
+    
 
     }
 
