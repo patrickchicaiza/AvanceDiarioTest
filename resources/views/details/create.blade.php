@@ -51,12 +51,12 @@
 
                 <div class="form-group">
 
-                    <strong>User:</strong>
+                    <strong>Form Id:</strong>
 
                     <select id="form_id" name="form_id" class="form-control" required>
                         <option value="Elegir">--Seleccionar--</option>
                         @foreach ($formTable as $formTables)
-                            <option value="{{ $formTables->id }}">{{ $formTables->user_id }}</option>
+                            <option value="{{ $formTables->id }}">{{ $formTables->id }} - {{ $formTables->date }}</option>
                         @endforeach
                     </select>
 
@@ -169,7 +169,7 @@
 
                     <strong>Images:</strong>
 
-                    <input type="text" name="images" class="form-control" placeholder="Images">
+                    <input type="file" name="images" class="form-control" placeholder="Images">
 
                 </div>
 
