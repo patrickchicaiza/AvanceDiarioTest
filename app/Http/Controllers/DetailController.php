@@ -122,7 +122,7 @@ class DetailController extends Controller
         $detail = Detail::find($id);
         $detail->update($input);
 
-        return redirect()->route('detail.index')
+        return redirect()->route('details.index')
             ->with('success', 'Detalle editado correctamente');
     }
 

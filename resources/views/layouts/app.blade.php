@@ -40,7 +40,7 @@
 
                 <a class="navbar-brand" href="{{ url('/') }}">
 
-                    Avance Diario
+                    Daily Advance
 
                 </a>
 

@@ -67,7 +67,7 @@
 
                 <div class="form-group">
 
-                    <strong>User ID:</strong>
+                    <strong>Date:</strong>
 
                     <input type="date" name="date" value="{{ $form->date }}" class="form-control"
                         placeholder="Date" readonly>
