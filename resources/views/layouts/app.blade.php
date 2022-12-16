@@ -67,31 +67,31 @@
                     <div class="navbar-toggle menu-toggle d-xl-none d-block float-left align-items-center justify-content-center"
                         data-toggle="collapse"><i class="ft-menu font-medium-3"></i></div>
                     <ul class="navbar-nav">
-                    @guest
-                    @else
-                        <li class="nav-item mr-2 d-none d-lg-block"><a class="nav-link apptogglefullscreen"
-                                id="navbar-fullscreen" href="javascript:;"><i class="ft-maximize font-medium-3"></i></a>
-                        </li>
-                        <li> <a class="navbar-brand" href="{{ url('#') }}">
+                        @guest
+                        @else
+                            <li class="nav-item mr-2 d-none d-lg-block"><a class="nav-link apptogglefullscreen"
+                                    id="navbar-fullscreen" href="javascript:;"><i class="ft-maximize font-medium-3"></i></a>
+                            </li>
+                            <li> <a class="navbar-brand" href="{{ url('#') }}">
 
-                                Daily Report
+                                    Daily Report
 
-                            </a>
-                        </li>
-                       
+                                </a>
+                            </li>
 
 
-                    
-                        <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="javascript:"><i
-                                    class="ft-search font-medium-3"></i></a>
-                            <div class="search-input">
-                                <div class="search-input-icon"><i class="ft-search font-medium-3"></i></div>
-                                <input class="input" type="text" placeholder="Explore Apex..." tabindex="0"
-                                    data-search="template-search">
-                                <div class="search-input-close"><i class="ft-x font-medium-3"></i></div>
-                                <ul class="search-list"></ul>
-                            </div>
-                        </li>
+
+
+                            <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="javascript:"><i
+                                        class="ft-search font-medium-3"></i></a>
+                                <div class="search-input">
+                                    <div class="search-input-icon"><i class="ft-search font-medium-3"></i></div>
+                                    <input class="input" type="text" placeholder="Explore Apex..." tabindex="0"
+                                        data-search="template-search">
+                                    <div class="search-input-close"><i class="ft-x font-medium-3"></i></div>
+                                    <ul class="search-list"></ul>
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
@@ -100,46 +100,46 @@
                         <ul class="navbar-nav">
                             @guest
                             @else
-                           
-                            <li class="dropdown nav-item mr-1"><a
-                                    class="nav-link dropdown-toggle user-dropdown d-flex align-items-end"
-                                    id="dropdownBasic2" href="javascript:;" data-toggle="dropdown">
-                                    <div class="user d-md-flex d-none mr-2"><span class="text-right">{{
-                                            Auth::user()->name }}</span><span
-                                            class="text-right text-muted font-small-3">Available</span>
-                                    </div><img class="avatar"
-                                        src="../../../app-assets/img/portrait/small/avatar-s-1.png" alt="avatar"
-                                        height="35" width="35">
-                                </a>
-                                <div class="dropdown-menu text-left dropdown-menu-right m-0 pb-0"
-                                    aria-labelledby="dropdownBasic2"><a class="dropdown-item" href="app-chat.html">
-                                        <div class="d-flex align-items-center"><i
-                                                class="ft-message-square mr-2"></i><span>Chat</span></div>
-                                    </a><a class="dropdown-item" href="page-user-profile.html">
-                                        <div class="d-flex align-items-center"><i class="ft-edit mr-2"></i><span>Edit
-                                                Profile</span></div>
-                                    </a><a class="dropdown-item" href="app-email.html">
-                                        <div class="d-flex align-items-center"><i class="ft-mail mr-2"></i><span>My
-                                                Inbox</span></div>
+                                <li class="dropdown nav-item mr-1"><a
+                                        class="nav-link dropdown-toggle user-dropdown d-flex align-items-end"
+                                        id="dropdownBasic2" href="javascript:;" data-toggle="dropdown">
+                                        <div class="user d-md-flex d-none mr-2"><span
+                                                class="text-right">{{ Auth::user()->name }}</span><span
+                                                class="text-right text-muted font-small-3">Available</span>
+                                        </div><img class="avatar"
+                                            src="../../../app-assets/img/portrait/small/avatar-s-1.png" alt="avatar"
+                                            height="35" width="35">
                                     </a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item"
-                                        href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <div class="dropdown-menu text-left dropdown-menu-right m-0 pb-0"
+                                        aria-labelledby="dropdownBasic2"><a class="dropdown-item" href="app-chat.html">
+                                            <div class="d-flex align-items-center"><i
+                                                    class="ft-message-square mr-2"></i><span>Chat</span></div>
+                                        </a><a class="dropdown-item" href="page-user-profile.html">
+                                            <div class="d-flex align-items-center"><i class="ft-edit mr-2"></i><span>Edit
+                                                    Profile</span></div>
+                                        </a><a class="dropdown-item" href="app-email.html">
+                                            <div class="d-flex align-items-center"><i class="ft-mail mr-2"></i><span>My
+                                                    Inbox</span></div>
+                                        </a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item"
+                                            href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
 
-                                        <div class="d-flex align-items-center"><i
-                                                class="ft-power mr-2"></i><span>Logout</span></div>
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        style="display: none;">
+                                            <div class="d-flex align-items-center"><i
+                                                    class="ft-power mr-2"></i><span>Logout</span></div>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
 
-                                        @csrf
+                                            @csrf
 
-                                    </form>
-                                </div>
-                            </li>
-                            <li class="nav-item d-none d-lg-block mr-2 mt-1"><a
-                                    class="nav-link notification-sidebar-toggle" href="javascript:;"><i
-                                        class="ft-align-right font-medium-3"></i></a></li>
+                                        </form>
+                                    </div>
+                                </li>
+                                <li class="nav-item d-none d-lg-block mr-2 mt-1"><a
+                                        class="nav-link notification-sidebar-toggle" href="javascript:;"><i
+                                            class="ft-align-right font-medium-3"></i></a></li>
                             @endguest
                         </ul>
                     </div>
@@ -152,109 +152,111 @@
         <!-- END APEX-->
         <!-- ////////////////////////////////////////////////////////////////////////////-->
         @guest
-
         @else
-        <div class="wrapper">
-            <!-- main menu-->
-            <!--.main-menu(class="#{menuColor} #{menuOpenType}", class=(menuShadow == true ? 'menu-shadow' : ''))-->
-            <div class="app-sidebar menu-fixed" data-background-color="" data-image="" data-scroll-to-active="true">
-                <!-- main menu header-->
-                <!-- Sidebar Header starts-->
-                <div class="sidebar-header">
-                    <div class="logo clearfix"><a class="logo-text float-left" href="index.html">
-                            <div class="logo-img"><img src="../../../app-assets/img/logo.png" alt="Apex Logo" /></div>
-                            <span class="text">REPORTS</span>
-                        </a><a class="nav-toggle d-none d-lg-none d-xl-block" id="sidebarToggle" href="javascript:;"><i
-                                class="toggle-icon ft-toggle-right" data-toggle="expanded"></i></a><a
-                            class="nav-close d-block d-lg-block d-xl-none" id="sidebarClose" href="javascript:;"><i
-                                class="ft-x"></i></a></div>
-                </div>
-                <!-- Sidebar Header Ends-->
-                <!-- / main menu header-->
-                <!-- main menu content-->
-                <div class="sidebar-content main-menu-content">
-                    <div class="nav-container">
-                        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-
-                            <!-- from Here tables -->
-
-
-
-                            <li class=" nav-item"><a href="app-taskboard.html"><i class="ft-file-text"></i><span
-                                        class="menu-title" data-i18n="Task Board">New Report</span></a>
-                                <ul class="menu-content">
-                                    <li><a href="{{ route('forms.index') }}"><i
-                                                class="ft-arrow-right submenu-icon"></i><span class="menu-item"
-                                                data-i18n="Basic">Form</span></a>
-                                    </li>
-                                    <li><a href="{{ route('details.index') }}"><i
-                                                class="ft-arrow-right submenu-icon"></i><span class="menu-item"
-                                                data-i18n="Extended">Detail</span></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class=" nav-item"><a href="https://pixinvent.ticksy.com/" target="_blank"><i
-                                        class="ft-life-buoy"></i><span class="menu-title"
-                                        data-i18n="Support">Users</span></a>
-                                <ul class="menu-content">
-                                    <li><a href="{{ route('users.index') }}"><i
-                                                class="ft-arrow-right submenu-icon"></i><span class="menu-item"
-                                                data-i18n="Basic">User</span></a>
-                                    </li>
-                                    <li><a href="{{ route('roles.index') }}"><i
-                                                class="ft-arrow-right submenu-icon"></i><span class="menu-item"
-                                                data-i18n="Extended">Role</span></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a href="{{ route('clients.index') }}"><i class="ft-layers"></i><span
-                                        class="menu-title" data-i18n="Cards">Client</span></a>
-                            </li>
-                            <li class="nav-item"><a href="{{ route('projects.index') }}"><i class="ft-copy"></i><span
-                                        class="menu-title" data-i18n="Pages">Project</span></a>
-                            </li>
-                            <li class="nav-item"><a href="{{ route('platforms.index') }}"><i
-                                        class="ft-calendar"></i><span class="menu-title"
-                                        data-i18n="Calendar">Platform</span></a>
-                            </li>
-
-
-                            <!-- until Here tables -->
-
-
-                        </ul>
+            <div class="wrapper">
+                <!-- main menu-->
+                <!--.main-menu(class="#{menuColor} #{menuOpenType}", class=(menuShadow == true ? 'menu-shadow' : ''))-->
+                <div class="app-sidebar menu-fixed" data-background-color="" data-image=""
+                    data-scroll-to-active="true">
+                    <!-- main menu header-->
+                    <!-- Sidebar Header starts-->
+                    <div class="sidebar-header">
+                        <div class="logo clearfix"><a class="logo-text float-left" href="index.html">
+                                <div class="logo-img"><img src="../../../app-assets/img/logo.png" alt="Apex Logo" />
+                                </div>
+                                <span class="text">REPORTS</span>
+                            </a><a class="nav-toggle d-none d-lg-none d-xl-block" id="sidebarToggle"
+                                href="javascript:;"><i class="toggle-icon ft-toggle-right"
+                                    data-toggle="expanded"></i></a><a class="nav-close d-block d-lg-block d-xl-none"
+                                id="sidebarClose" href="javascript:;"><i class="ft-x"></i></a></div>
                     </div>
-                </div>
-                <!-- main menu content-->
-                <div class="sidebar-background"></div>
-                <!-- main menu footer-->
-                <!-- include includes/menu-footer-->
-                <!-- main menu footer-->
-                <!-- / main menu-->
+                    <!-- Sidebar Header Ends-->
+                    <!-- / main menu header-->
+                    <!-- main menu content-->
+                    <div class="sidebar-content main-menu-content">
+                        <div class="nav-container">
+                            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-                <!-- BEGIN : Footer-->
+                                <!-- from Here tables -->
+
+
+
+                                <li class=" nav-item"><a href="app-taskboard.html"><i class="ft-file-text"></i><span
+                                            class="menu-title" data-i18n="Task Board">New Report</span></a>
+                                    <ul class="menu-content">
+                                        <li><a href="{{ route('forms.index') }}"><i
+                                                    class="ft-arrow-right submenu-icon"></i><span class="menu-item"
+                                                    data-i18n="Basic">Form</span></a>
+                                        </li>
+                                        <li><a href="{{ route('details.index') }}"><i
+                                                    class="ft-arrow-right submenu-icon"></i><span class="menu-item"
+                                                    data-i18n="Extended">Detail</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class=" nav-item"><a href="https://pixinvent.ticksy.com/" target="_blank"><i
+                                            class="ft-life-buoy"></i><span class="menu-title"
+                                            data-i18n="Support">Users</span></a>
+                                    <ul class="menu-content">
+                                        <li><a href="{{ route('users.index') }}"><i
+                                                    class="ft-arrow-right submenu-icon"></i><span class="menu-item"
+                                                    data-i18n="Basic">User</span></a>
+                                        </li>
+                                        <li><a href="{{ route('roles.index') }}"><i
+                                                    class="ft-arrow-right submenu-icon"></i><span class="menu-item"
+                                                    data-i18n="Extended">Role</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a href="{{ route('clients.index') }}"><i
+                                            class="ft-layers"></i><span class="menu-title"
+                                            data-i18n="Cards">Client</span></a>
+                                </li>
+                                <li class="nav-item"><a href="{{ route('projects.index') }}"><i
+                                            class="ft-copy"></i><span class="menu-title"
+                                            data-i18n="Pages">Project</span></a>
+                                </li>
+                                <li class="nav-item"><a href="{{ route('platforms.index') }}"><i
+                                            class="ft-calendar"></i><span class="menu-title"
+                                            data-i18n="Calendar">Platform</span></a>
+                                </li>
+
+
+                                <!-- until Here tables -->
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- main menu content-->
+                    <div class="sidebar-background"></div>
+                    <!-- main menu footer-->
+                    <!-- include includes/menu-footer-->
+                    <!-- main menu footer-->
+                    <!-- / main menu-->
+
+                    <!-- BEGIN : Footer-->
                 @endguest
                 @guest
                 @else
-                <!--      <footer class="footer undefined undefined">
-                    <p class="clearfix text-muted m-0"><span>Copyright &copy; 2022 &nbsp;</span><a
-                            href="https://mirandasoft-ec.com/" id="pixinventLink"
-                            target="https://mirandasoft-ec.com/">MIRANDASOFT</a><span class="d-none d-sm-inline-block">,
-                            All rights reserved.</span></p>
-                </footer>
- -->
-                <footer class="footer undefined undefined">
-                    <p class="clearfix text-muted m-0"><span>Copyright &copy; 2020 &nbsp;</span><a
-                            href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" id="pixinventLink"
-                            target="_blank">PIXINVENT</a><span class="d-none d-sm-inline-block">, All rights
-                            reserved.</span></p>
-                </footer>
-                <!-- End : Footer-->
-                <!-- Scroll to top button -->
+                    <!--      <footer class="footer undefined undefined">
+                        <p class="clearfix text-muted m-0"><span>Copyright &copy; 2022 &nbsp;</span><a
+                                href="https://mirandasoft-ec.com/" id="pixinventLink"
+                                target="https://mirandasoft-ec.com/">MIRANDASOFT</a><span class="d-none d-sm-inline-block">,
+                                All rights reserved.</span></p>
+                    </footer>-->
+                    <footer class="footer undefined undefined">
+                        <p class="clearfix text-muted m-0"><span>Copyright &copy; 2020 &nbsp;</span><a
+                                href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" id="pixinventLink"
+                                target="_blank">PIXINVENT</a><span class="d-none d-sm-inline-block">, All rights
+                                reserved.</span></p>
+                    </footer>
+                    <!-- End : Footer-->
+                    <!-- Scroll to top button -->
 
-                <!-- End : Footer-->
-                <!-- Scroll to top button -->
-                <button class="btn btn-primary scroll-top" type="button"><i class="ft-arrow-up"></i></button>
+                    <!-- End : Footer-->
+                    <!-- Scroll to top button -->
+                    <button class="btn btn-primary scroll-top" type="button"><i class="ft-arrow-up"></i></button>
 
                 @endguest
 
@@ -293,6 +295,7 @@
         <!-- BEGIN: Custom CSS-->
         <script src="../../../assets/js/scripts.js"></script>
         <!-- END: Custom CSS-->
+    </div>
 </body>
 
 </html>
