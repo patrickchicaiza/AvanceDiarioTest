@@ -1,109 +1,121 @@
-{{-- @extends('layouts.app') --}}
 @extends('layouts.appTable')
 
 @section('content')
-    <!-- BEGIN : Main Content-->
-    <div class="main-content">
-        <div class="content-overlay"></div>
-        <div class="content-wrapper">
-            <div class="row">
+<div class="row">
+    <div class="col-12">
+        <div class="content-header">Clients</div>
+</div>
+<div class="pull-right">
 
-                <div class="pull-right">
+@can('client-create')
+<a class="btn btn-success" href="{{ route('clients.create') }}"> Create New Client</a>
+@endcan
 
-                    @can('client-create')
-                        <a class="btn btn-success" href="{{ route('clients.create') }}"> Create New Client</a>
+</div>
+</div>
+<!-- Zero configuration table -->
+<section id="configuration">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-content">
+    <div class="card-body">
+
+                        <div class="table-responsive">
+        <table class="table table-striped table-bordered zero-configuration">
+                                <thead>
+
+
+                                    <tr>
+
+            <th>No</th>
+
+                                        <th>Name</th>
+
+                                        <th>Ruc</th>
+
+            <th width="280px">Action</th>
+
+                                    </tr>
+
+
+            </thead>
+            <tbody>
+                @foreach ($clients as $client)
+                <tr>
+
+                    <td>{{ ++$i }}</td>
+
+                <td>{{ $client->client_name }}</td>
+
+                    <td>{{ $client->ruc }}</td>
+
+<!--                     <td>
+
+                <form action="{{ route('clients.destroy', $client->id) }}" method="POST">
+
+                            <a class="btn btn-info" href="{{ route('clients.show', $client->id) }}">Show</a>
+
+                            @can('client-edit')
+                            <a class="btn btn-primary" href="{{ route('clients.edit', $client->id) }}">Edit</a>
                     @endcan
 
-                </div>
-            </div>
-            <!-- Zero configuration table -->
-            <section id="configuration">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Clients</h4>
-                            </div>
-                            <div class="card-content">
-                                <div class="card-body">
 
-                                    <div class="table-responsive">
+                    @csrf
 
-                                        @if ($message = Session::get('success'))
-                                            <div class="alert alert-success">
+                    @method('DELETE')
 
-                                                <p>{{ $message }}</p>
+                    @can('client-delete')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan
 
-                                            </div>
-                                        @endif
-                                        <table class="table table-striped table-bordered zero-configuration">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Name</th>
-                                                    <th>Ruc</th>
-                                                    <th width="280px">Action</th>
+                </form>
 
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($clients as $client)
-                                                    <tr>
+                </td> -->
+                <td class="text-truncate">
+                    <form action="{{ route('clients.destroy', $client->id) }}" method="POST">
 
-                                                        <td>{{ ++$i }}</td>
-
-                                                        <td>{{ $client->client_name }}</td>
-
-                                                        <td>{{ $client->ruc }}</td>
-
-                                                        <td>
-
-                                                            <form action="{{ route('clients.destroy', $client->id) }}"
-                                                                method="POST">
-
-                                                                <a class="btn btn-info"
-                                                                    href="{{ route('clients.show', $client->id) }}">Show</a>
-
-                                                                @can('client-edit')
-                                                                    <a class="btn btn-primary"
-                                                                        href="{{ route('clients.edit', $client->id) }}">Edit</a>
-                                                                @endcan
+                        <a href="{{ route('clients.show', $client->id) }}" class="info p-0">
+                            <i class="ft-user font-medium-3 mr-2"></i>
+                        </a>
+                        @can('client-edit')
+                        <a href="{{ route('clients.edit', $client->id) }}" class="success p-0">
+                            <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                        </a>
+                        @endcan
 
 
-                                                                @csrf
+                        @csrf
 
-                                                                @method('DELETE')
+                        @method('DELETE')
 
-                                                                @can('client-delete')
-                                                                    <button type="submit"
-                                                                        class="btn btn-danger">Delete</button>
-                                                                @endcan
+                        @can('client-delete')
 
-                                                            </form>
+                        <button type="submit" class="btn btn-danger">Delete</button>
 
-                                                        </td>
+                        @endcan
+                    </form>
+                </td>
 
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Name</th>
-                                                    <th>Ruc</th>
-                                                    <th width="280px">Action</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                        {!! $clients->links() !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+                </tr>
+                @endforeach
+
+            </tbody>
+
+        </table>
+
+        {!! $clients->links() !!}
     </div>
-    <!--/ Zero configuration table -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!--/ Zero configuration table -->
+
+
 @endsection

@@ -12,13 +12,13 @@
 
             </div>
 
-            <div class="pull-right">
+         <div class="pull-right">
 
                 @can('detail-create')
-                    <a class="btn btn-success" href="{{ route('details.create') }}"> Create New Detail</a>
+                 <a class="btn btn-success" href="{{ route('details.create') }}"> Create New Detail</a>
                 @endcan
 
-            </div>
+    </div>
 
         </div>
 
@@ -54,13 +54,13 @@
 
             <th>Start Time</th>
 
-            <th>End Time</th>
+       <th>End Time</th>
 
             <th>Progress</th>
 
             <th>Images</th>
 
-            <th>Status</th>
+        <th>Status</th>
 
             <th>Comment</th>
 
@@ -75,47 +75,47 @@
                 <td>{{ $detail->projectName }}</td>
                 <td> {{ $detail->platformName }}</td>
                 <td> {{ $detail->userId }}</td>
-                <td> {{ $detail->epic }}</td>
+         <td> {{ $detail->epic }}</td>
                 <td> {{ $detail->userStory }}</td>
                 <td> {{ $detail->estimatedTime }}</td>
-                <td> {{ $detail->startTime }}</td>
-                <td> {{ $detail->endTime }}</td>
-                <td> {{ $detail->progress }}</td>
-                <td> {{ $detail->images }}</td>
-                <td> {{ $detail->status }}</td>
-                <td> {{ $detail->comment }}</td>
+            <td> {{ $detail->startTime }}</td>
+    <td> {{ $detail->endTime }}</td>
+    <td> {{ $detail->progress }}</td>
+    <td> {{ $detail->images }}</td>
+    <td> {{ $detail->status }}</td>
+    <td> {{ $detail->comment }}</td>
 
 
-                <td>
+    <td>
 
-                    <form action="{{ route('details.destroy', $detail->id) }}" method="POST">
+        <form action="{{ route('details.destroy', $detail->id) }}" method="POST">
 
-                        <a class="btn btn-info" href="{{ route('details.show', $detail->id) }}">Show</a>
+            <a class="btn btn-info" href="{{ route('details.show', $detail->id) }}">Show</a>
 
-                        @can('detail-edit')
-                            <a class="btn btn-primary" href="{{ route('details.edit', $detail->id) }}">Edit</a>
-                        @endcan
-
-
-                        @csrf
-
-                        @method('DELETE')
-
-                        @can('detail-delete')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        @endcan
-
-                    </form>
-
-                </td>
-
-            </tr>
-        @endforeach
-
-    </table>
-
-    {!! $details->links() !!}
+            @can('detail-edit')
+            <a class="btn btn-primary" href="{{ route('details.edit', $detail->id) }}">Edit</a>
+            @endcan
 
 
-    <p class="text-center text-primary"><small>MirandaSoft</small></p>
+            @csrf
+
+            @method('DELETE')
+
+            @can('detail-delete')
+            <button type="submit" class="btn btn-danger">Delete</button>
+            @endcan
+
+        </form>
+
+    </td>
+
+</tr>
+@endforeach
+
+</table>
+
+{!! $details->links() !!}
+
+
+<p class="text-center text-primary"><small>MirandaSoft</small></p>
 @endsection

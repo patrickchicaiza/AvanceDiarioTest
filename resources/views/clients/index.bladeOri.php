@@ -1,93 +1,98 @@
 @extends('layouts.app')
-
-
 @section('content')
-    <div class="row">
+<div class="row">
+    <div class="col-12">
+        <div class="content-header">Data Sources</div>
+    </div>
+</div>
+<div class="row">
 
-        <div class="col-lg-12 margin-tb">
 
-            <div class="pull-left">
 
-                <h2>Clients</h2>
+    <div class="col-lg-12 margin-tb">
 
-            </div>
+        <div class="pull-left">
 
-            <div class="pull-right">
+            <h2>Clients</h2>
 
-                @can('client-create')
-                    <a class="btn btn-success" href="{{ route('clients.create') }}"> Create New Client</a>
-                @endcan
+        </div>
 
-            </div>
+        <div class="pull-right">
+
+            @can('client-create')
+            <a class="btn btn-success" href="{{ route('clients.create') }}"> Create New Client</a>
+            @endcan
 
         </div>
 
     </div>
 
-
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-
-            <p>{{ $message }}</p>
-
-        </div>
-    @endif
+</div>
 
 
-    <table class="table table-bordered">
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
 
-        <tr>
+    <p>{{ $message }}</p>
 
-            <th>No</th>
-
-            <th>Name</th>
-
-            <th>Ruc</th>
-
-            <th width="280px">Action</th>
-
-        </tr>
-
-        @foreach ($clients as $client)
-            <tr>
-
-                <td>{{ ++$i }}</td>
-
-                <td>{{ $client->client_name }}</td>
-
-                <td>{{ $client->ruc }}</td>
-
-                <td>
-
-                    <form action="{{ route('clients.destroy', $client->id) }}" method="POST">
-
-                        <a class="btn btn-info" href="{{ route('clients.show', $client->id) }}">Show</a>
-
-                        @can('client-edit')
-                            <a class="btn btn-primary" href="{{ route('clients.edit', $client->id) }}">Edit</a>
-                        @endcan
+</div>
+@endif
 
 
-                        @csrf
+<table class="table table-bordered">
 
-                        @method('DELETE')
+    <tr>
 
-                        @can('client-delete')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        @endcan
+        <th>No</th>
 
-                    </form>
+        <th>Name</th>
 
-                </td>
+        <th>Ruc</th>
 
-            </tr>
-        @endforeach
+        <th width="280px">Action</th>
 
-    </table>
+    </tr>
+
+    @foreach ($clients as $client)
+    <tr>
+
+        <td>{{ ++$i }}</td>
+
+        <td>{{ $client->client_name }}</td>
+
+        <td>{{ $client->ruc }}</td>
+
+        <td>
+
+            <form action="{{ route('clients.destroy', $client->id) }}" method="POST">
+
+                <a class="btn btn-info" href="{{ route('clients.show', $client->id) }}">Show</a>
+
+                @can('client-edit')
+                <a class="btn btn-primary" href="{{ route('clients.edit', $client->id) }}">Edit</a>
+                @endcan
 
 
-    {!! $clients->links() !!}
+                @csrf
+
+                @method('DELETE')
+
+                @can('client-delete')
+                <button type="submit" class="btn btn-danger">Delete</button>
+                @endcan
+
+            </form>
+
+        </td>
+
+    </tr>
+    @endforeach
+
+</table>
 
 
-    <p class="text-center text-primary"><small>MirandaSoft</small></p>
+{!! $clients->links() !!}
+
+
+<p class="text-center text-primary"><small>MirandaSoft</small></p>
 @endsection
