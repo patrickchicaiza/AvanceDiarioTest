@@ -95,6 +95,8 @@
                         @can('client-delete')
 
                         <button type="submit" class="btn btn-danger">Delete</button>
+                        <a href="{{ route('clients.destroy', $client->id) }}" class="success p-0">
+                            <i class="ft-edit-2 font-medium-3 mr-2"></i>
 
                         @endcan
                     </form>

@@ -74,7 +74,7 @@ class FormController extends Controller
 
         //Form::create($request->all());
 
-        return redirect()->route('forms.index')
+        return redirect()->route('details.create')
 
             ->with('Formulario creado satisfactoriamente.');
     }

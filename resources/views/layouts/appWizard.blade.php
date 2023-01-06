@@ -2,22 +2,19 @@
 <html class="loading" lang="en">
 
 <head>
-    <!-- APEX-->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <meta name="description"
-    content="Apex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords"
-    content="admin template, Apex admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="description" content="Apex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Apex admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
+    <title>Form Wizard - Apex responsive bootstrap 4 admin template</title>
     <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/img/ico/favicon.ico">
     <link rel="shortcut icon" type="image/png" href="../../../app-assets/img/ico/favicon-32.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900%7CMontserrat:300,400,500,600,700,800,900"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
     <!-- font icons-->
     <link rel="stylesheet" type="text/css" href="../../../app-assets/fonts/feather/style.min.css">
@@ -26,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/perfect-scrollbar.min.css">
     <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/prism.min.css">
     <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/switchery.min.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/chartist.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/pickadate/pickadate.css">
     <!-- END VENDOR CSS-->
     <!-- BEGIN APEX CSS-->
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/bootstrap.css">
@@ -36,6 +33,12 @@
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/layout-dark.css">
     <link rel="stylesheet" href="../../../app-assets/css/plugins/switchery.css">
     <!-- END APEX CSS-->
+    <!-- BEGIN Page Level CSS-->
+    <link rel="stylesheet" href="../../../app-assets/css/pages/form-wizard.css">
+    <!-- END Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
+    <!-- END: Custom CSS-->
     <!-- BEGIN Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/dashboard1.css">
     <!-- END Page Level CSS-->
@@ -264,12 +267,16 @@
 
 
     </div>
-    <!-- BEGIN VENDOR JS-->
-    <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
+   <!-- BEGIN VENDOR JS-->
+   <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
     <script src="../../../app-assets/vendors/js/switchery.min.js"></script>
     <!-- BEGIN VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
-    <script src="../../../app-assets/vendors/js/chartist.min.js"></script>
+    <script src="../../../app-assets/vendors/js/jquery.steps.min.js"></script>
+    <script src="../../../app-assets/vendors/js/pickadate/picker.js"></script>
+    <script src="../../../app-assets/vendors/js/pickadate/picker.date.js"></script>
+    <script src="../../../app-assets/vendors/js/pickadate/picker.time.js"></script>
+    <script src="../../../app-assets/vendors/js/pickadate/legacy.js"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN APEX JS-->
     <script src="../../../app-assets/js/core/app-menu.js"></script>
@@ -279,7 +286,7 @@
     <script src="../../../app-assets/js/scroll-top.js"></script>
     <!-- END APEX JS-->
     <!-- BEGIN PAGE LEVEL JS-->
-    <script src="../../../app-assets/js/dashboard1.js"></script>
+    <script src="../../../app-assets/js/form-wizard.js"></script>
     <!-- END PAGE LEVEL JS-->
     <!-- BEGIN: Custom CSS-->
     <script src="../../../assets/js/scripts.js"></script>

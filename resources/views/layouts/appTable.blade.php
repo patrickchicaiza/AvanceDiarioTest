@@ -68,7 +68,7 @@
                     <li class="nav-item mr-2 d-none d-lg-block"><a class="nav-link apptogglefullscreen"
                             id="navbar-fullscreen" href="javascript:;"><i class="ft-maximize font-medium-3"></i></a>
                     </li>
-                    <li> <a class="navbar-brand" href="{{ url('#') }}">
+                    <li> <a class="navbar-brand" href="{{ route('home')}}">
 
                             Daily Report
 
@@ -156,9 +156,9 @@
             <!-- main menu header-->
             <!-- Sidebar Header starts-->
             <div class="sidebar-header">
-                <div class="logo clearfix"><a class="logo-text float-left" href="index.html">
+                <div class="logo clearfix"><a class="logo-text float-left" href="{{ route('home')}}">
                         <div class="logo-img"><img src="../../../app-assets/img/logo.png" alt="Apex Logo" /></div>
-                        <span class="text">APEX</span>
+                        <span class="text">Logo</span>
                     </a><a class="nav-toggle d-none d-lg-none d-xl-block" id="sidebarToggle" href="javascript:;"><i
                             class="toggle-icon ft-toggle-right" data-toggle="expanded"></i></a><a
                         class="nav-close d-block d-lg-block d-xl-none" id="sidebarClose" href="javascript:;"><i

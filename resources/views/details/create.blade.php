@@ -1,4 +1,4 @@
-@extends('layouts.appOri')
+@extends('layouts.app')
 
 
 @section('content')
@@ -41,174 +41,135 @@
     @endif
 
 
-    <form action="{{ route('details.store') }}" method="POST">
-
-        @csrf
+   
 
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+        <!-- Horizontal Form Layout starts -->
+        <section id="horizontal-form-layout">
+                        <div class="row match-height">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <!-- <h4 class="card-title">Horizontal Form</h4> -->
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            
+                                        <form action="{{ route('forms.store') }}" method="POST">
 
-                <div class="form-group">
-
-                    <strong>Form Id:</strong>
-
-                    <select id="form_id" name="form_id" class="form-control" required>
+@csrf
+                                                <div class="row">
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 col-form-label" for="horizontal-form-1">User</label>
+                                                            <div class="col-md-9">
+                                                            <select id="form_id" name="form_id" class="form-control" required>
                         <option value="Elegir">--Seleccionar--</option>
                         @foreach ($formTable as $formTables)
                             <option value="{{ $formTables->id }}">{{ $formTables->id }} - {{ $formTables->date }}</option>
                         @endforeach
                     </select>
-
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>Project:</strong>
-
-                    <select id="project_id" name="project_id" class="form-control" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 col-form-label" for="horizontal-form-2">Project</label>
+                                                            <div class="col-md-9">
+                                                            <select id="project_id" name="project_id" class="form-control" required>
                         <option value="Elegir">--Seleccionar--</option>
                         @foreach ($projectTable as $projectTables)
                             <option value="{{ $projectTables->id }}">{{ $projectTables->project_name }}</option>
                         @endforeach
                     </select>
-
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>Platform:</strong>
-
-                    <select id="platform_id" name="platform_id" class="form-control" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-md-3">
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 col-form-label" for="horizontal-form-3">Platform</label>
+                                                            <div class="col-md-9">
+                                                            <select id="platform_id" name="platform_id" class="form-control" required>
                         <option value="Elegir">--Seleccionar--</option>
                         @foreach ($platformTable as $platformTables)
                             <option value="{{ $platformTables->id }}">{{ $platformTables->platform_name }}</option>
                         @endforeach
                     </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 col-form-label" for="horizontal-form-4">Epic</label>
+                                                            <div class="col-md-9">
+                                                            <input type="text" name="epic" class="form-control">                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 col-form-label" for="horizontal-form-5">Estimated Time</label>
+                                                            <div class="col-md-9">
+                                                            <input type="time" name="estimatedTime" placeholder="Estimated Time">
+                                                                
+                                                            </div>
 
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 col-form-label" for="horizontal-form-6">Start Time</label>
+                                                            <div class="col-md-9">
+                                                            <input type="time" name="startTime">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 col-form-label" for="horizontal-form-7">End Time</label>
+                                                            <div class="col-md-9">
+                                                              <input type="time" name="endTime" placeholder="End Time">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 col-form-label" for="horizontal-form-8">Progress</label>
+                                                            <div class="col-md-9">
+                                                            <input type="number" name="progress" placeholder="Progress">
+                                                            </div>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 col-form-label" for="horizontal-form-10">User Story</label>
+                                                            <div class="col-md-9">
+                                                                <textarea id="horizontal-form-9" rows="6" class="form-control square" name="userStory"></textarea>
+                                                               
 
-                <div class="form-group">
-
-                    <strong>Epic:</strong>
-
-                    <input type="text" name="epic" class="form-control" placeholder="Epic">
-
-                </div>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>User Story:</strong>
-
-                    <input type="text" name="userStory" class="form-control" placeholder="User Story">
-
-                </div>
-
-            </div>
-
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>Estimated Time:</strong>
-
-                    <input type="time" name="estimatedTime" class="form-control" placeholder="Estimated Time">
-
-                </div>
-
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>Start Time:</strong>
-
-                    <input type="time" name="startTime" class="form-control" placeholder="Start Time">
-
-                </div>
-
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>End Time:</strong>
-
-                    <input type="time" name="endTime" class="form-control" placeholder="End Time">
-
-                </div>
-
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>Progress:</strong>
-
-                    <input type="number" name="progress" class="form-control" placeholder="Progress">
-
-                </div>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>Images:</strong>
-
-                    <input type="file" name="images" class="form-control" placeholder="Images">
-
-                </div>
-
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>Status:</strong>
-
-                    <input type="text" name="status" class="form-control" placeholder="Status">
-
-                </div>
-
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>Comment:</strong>
-
-                    <input type="text" name="comment" class="form-control" placeholder="Comment">
-
-                </div>
-
-            </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 col-form-label" for="horizontal-form-9">Images</label>
+                                                            <div class="col-md-9">
+                                                            <input type="file" name="images" class="form-control" placeholder="Images">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Save</button>
+                                                <button type="button" class="btn btn-secondary"><i class="ft-x mr-1" href="{{ route('details.index') }}"></i>Cancel</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Horizontal Form Layout ends -->
 
 
 
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-
-            </div>
-
-        </div>
-
-
-    </form>
 
 
     <p class="text-center text-primary"><small>MirandaSoft</small></p>
